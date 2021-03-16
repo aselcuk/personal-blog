@@ -1,8 +1,8 @@
 import React from "react";
-import { HTMLElementProps, HTMLElementPropsWithRef, ICoreComponentWithRef } from "core";
+import { HTMLElementProps, HTMLElementPropsWithRef, IComponentWithRef } from "core";
 import { Container, Content } from "./styles/RootRefTest";
 
-interface IBox extends ICoreComponentWithRef<'div'> {
+interface IBox extends IComponentWithRef<'div'> {
     Content: (props: HTMLElementProps<'div'>) => JSX.Element;
 }
 
