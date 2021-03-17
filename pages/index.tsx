@@ -10,6 +10,13 @@ export default function Home() {
 	const onClickRefItem = () => {
 		myRef.current.style.backgroundColor = 'tomato';
 	};
+	const deneme = () => {
+		const myObj = {
+			name:'deneme',
+			surname: 'abc'
+		};
+		return '';
+	};
 
 	return (
 		<div>
