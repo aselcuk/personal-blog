@@ -1,12 +1,12 @@
-import { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType } from "react";
+import { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType } from 'react';
 
-export type HTMLElementProps<T extends ElementType<any>> = ComponentPropsWithoutRef<T> & {
+export type HTMLElementProps<T extends ElementType<unknown>> = ComponentPropsWithoutRef<T> & {
     customStyle?: Array<string>;
 }
 
-export type HTMLElementPropsWithRef<T extends ElementType<any>> = ComponentPropsWithRef<T> & {
+export type HTMLElementPropsWithRef<T extends ElementType<unknown>> = ComponentPropsWithRef<T> & {
     customStyle?: Array<string>;
 }
 
 // componentin root elemanı forwardRef ile kullanılacaksa bu interface ile kullanılmalıdır.
-export interface IComponentWithRef<T extends ElementType<any>> extends React.ForwardRefExoticComponent<HTMLElementPropsWithRef<T>> { };
+export type IComponentWithRef<T extends ElementType<unknown>> = React.ForwardRefExoticComponent<HTMLElementPropsWithRef<T>>

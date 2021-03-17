@@ -1,6 +1,6 @@
-import { GlobalStyles } from "global-styles";
-import { ThemeProvider } from "styled-components";
-import { theme } from "styles/theme";
+import { GlobalStyles } from 'global-styles';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'styles/theme';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyles />
       <Component {...pageProps} />
     </ThemeProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

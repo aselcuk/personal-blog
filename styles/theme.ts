@@ -1,3 +1,3 @@
 export const theme = {
-    bg_color: "#FFFFFF"
+    bg_color: '#FFFFFF'
 };
