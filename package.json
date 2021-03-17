@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint ./**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix ./**/*.{ts,tsx}",
     "svgr": "svgr ./public/assets/icons -d ./components/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx"
   },
   "husky": {
