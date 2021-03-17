@@ -12,7 +12,7 @@
     "svgr": "svgr ./public/assets/icons -d ./components/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx"
   },
   "lint-staged": {
-    "*.{ts,tsx}":  ["npm run lint:fix", "npm run lint"]
+    "*.{ts,tsx}": "npm run lint"
   },
   "dependencies": {
     "next": "10.0.8",
