@@ -10,14 +10,6 @@
     "lint:fix": "eslint --fix ./**/*.{ts,tsx}",
     "svgr": "svgr ./public/assets/icons -d ./components/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": "npm run lint"
-  },
   "dependencies": {
     "next": "10.0.8",
     "react": "17.0.1",
@@ -36,7 +28,6 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^5.1.3",
-    "lint-staged": "^10.5.4",
     "typescript": "^4.2.3"
   }
 }
