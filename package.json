@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint ./**/*.{ts,tsx}",
     "lint:fix": "eslint --fix ./**/*.{ts,tsx}",
-    "lint-staged": "lint-staged",
+    "lint:staged": "lint-staged",
     "svgr": "svgr ./public/assets/icons -d ./components/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx"
   },
   "lint-staged": {
