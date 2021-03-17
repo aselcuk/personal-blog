@@ -12,7 +12,7 @@ export default function Home() {
 	};
 	const deneme = () => {
 		const myObj = {
-			name: 'deneme',
+			name:'deneme',
 			surname: 'abc'
 		};
 		return '';
