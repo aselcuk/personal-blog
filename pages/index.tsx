@@ -1,7 +1,7 @@
 import { Box, RootRefTest } from 'components';
 import Head from 'next/head';
 import { useRef, Ref } from 'react';
-import { css } from 'styled-components';
+import { customBoxStyle } from 'styles/Home';
 
 export default function Home() {
 
@@ -31,11 +31,3 @@ export default function Home() {
 		</div>
 	);
 }
-
-const customBoxStyle = css`
-  color: tomato;
-  background-color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 5px 15px;
-`;
