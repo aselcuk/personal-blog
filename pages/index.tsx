@@ -1,7 +1,6 @@
-import { Box, RootRefTest } from 'components';
-import Head from 'next/head';
-import { useRef, Ref } from 'react';
 import { customBoxStyle } from 'styles/Home';
+import { Box, RootRefTest } from 'components';
+import { Ref, useRef } from 'react';
 
 export default function Home() {
 
@@ -13,11 +12,6 @@ export default function Home() {
 
 	return (
 		<div>
-			<Head>
-				<title>Create Next App</title>
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
-
 			<main>
 				<Box
 					customStyle={customBoxStyle}

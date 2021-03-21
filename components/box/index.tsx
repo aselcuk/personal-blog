@@ -1,5 +1,5 @@
-import { HTMLElementProps } from 'core';
 import { Container } from './styles/Box';
+import { HTMLElementProps } from 'core';
 
 
 export default function Box({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
