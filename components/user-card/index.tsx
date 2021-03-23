@@ -15,7 +15,7 @@ UserCard.InfoHeader = function UserCardInfoHeader({ children, customStyle, ...pr
   return <InfoHeader {...props} customStyle={customStyle}>{children}</InfoHeader>;
 };
 
-UserCard.Title = function UserCardTitle({ children, customStyle, ...props }: HTMLElementProps<'span'>) {
+UserCard.Title = function UserCardTitle({ children, customStyle, ...props }: HTMLElementProps<'h1'>) {
   return <Title {...props} customStyle={customStyle}>{children}</Title>;
 };
 

@@ -14,7 +14,7 @@ ArticleCard.Description = function ArticleCardDescription({ children, customStyl
   return <Description {...props} customStyle={customStyle}>{children}</Description>;
 };
 
-ArticleCard.Title = function ArticleCardTitle({ children, customStyle, ...props }: HTMLElementProps<'span'>) {
+ArticleCard.Title = function ArticleCardTitle({ children, customStyle, ...props }: HTMLElementProps<'h2'>) {
   return <Title {...props} customStyle={customStyle}>{children}</Title>;
 };
 

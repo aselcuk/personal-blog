@@ -44,7 +44,6 @@ export const Description = styled.span`
 
 export const SubText = styled.span`
   font-size: 11px;
-  white-space: nowrap;
   margin-top: 2px;
   color: ${({ theme }) => theme.colors.subTextColor};
 
