@@ -14,7 +14,7 @@ export const SwitchLabel = styled.label`
   width: 56px;
   height: 28px;
   border-radius: 100px;
-  border: 1px solid gray;
+  background: #3a3a3a;
   position: relative;
   transition: background-color 0.2s;
 `;
@@ -22,14 +22,14 @@ export const SwitchLabel = styled.label`
 export const SwitchButton = styled.span`
   content: "";
   position: absolute;
-  top: 1px;
+  top: 2px;
   left: 2px;
   width: 24px;
   height: 24px;
   border-radius: 45px;
   transition: 0.2s;
   z-index: 1;
-  background: grey;
+  background: #fff;
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
   ${SwitchInput}:checked + ${SwitchLabel} & {
     left: calc(100% - 2px);

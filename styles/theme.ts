@@ -12,7 +12,7 @@ export const theme = {
 
 export const darkTheme = {
     colors: {
-        bgColor: '#4B4B4B',
+        bgColor: '#3a3a3a',
         borderColor: '#B6B6B6',
         cardBgColor: '#666666',
         primaryTextColor: '#FFFFFF',

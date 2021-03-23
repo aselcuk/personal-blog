@@ -1,10 +1,9 @@
+import { SwitchContainer } from 'containers';
 import { css } from 'styled-components';
-import { useState } from 'react';
-import { Box, Switch, UserCard } from 'components';
-import { Github, Linkedin, Moon, Sun } from 'components/icons';
+import { Box, UserCard } from 'components';
+import { Github, Linkedin } from 'components/icons';
 
 export default function UserCardContainer() {
-  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <Box customStyle={css`position: relative;`}>
@@ -29,22 +28,7 @@ export default function UserCardContainer() {
         </Box>
       </UserCard>
       <Box customStyle={css`position: absolute; right: 20px; top: -10px;`}>
-        <Switch.Input
-          className='switch-checkbox'
-          type='checkbox'
-          id='theme-switch'
-          checked={isToggled}
-          onChange={e => setIsToggled(e.target.checked)}
-        />
-        <Switch.Label className='switch-label' htmlFor='theme-switch'>
-          <Switch className='switch-button' />
-          <Box customStyle={css`margin-left: 6px; margin-top: 3px; color: rgb(229, 233, 31);`}>
-            <Sun width='18px' height='18px' strokeWidth='2' />
-          </Box>
-          <Box customStyle={css`position: absolute; right: 6px; top: 4px;`}>
-            <Moon width='18px' height='18px' strokeWidth='2' />
-          </Box>
-        </Switch.Label>
+        <SwitchContainer />
       </Box>
     </Box>
   );
