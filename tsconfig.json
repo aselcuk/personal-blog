@@ -8,12 +8,6 @@
       "constants/*": [
         "constants/*"
       ],
-      "containers/*": [
-        "containers/*"
-      ],
-      "lib/*": [
-        "lib/*"
-      ],
       "models/*": [
         "models/*"
       ]

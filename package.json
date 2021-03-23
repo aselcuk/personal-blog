@@ -1,7 +1,9 @@
 {
-  "name": "frontend-solution",
+  "name": "blog",
   "version": "0.1.0",
   "private": true,
+  "author": "Ali SELÇUK",
+  "description": "Personal blog project",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +11,7 @@
     "lint": "eslint ./**/*.{ts,tsx}",
     "lint:fix": "eslint --fix ./**/*.{ts,tsx}",
     "lint:staged": "lint-staged",
-    "svgr": "svgr ./public/assets/icons -d ./components/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx"
+    "svgr": "svgr ./public/assets/icons -d ./components/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx && npm run lint:fix"
   },
   "lint-staged": {
     "*.{ts,tsx}": "npm run lint"

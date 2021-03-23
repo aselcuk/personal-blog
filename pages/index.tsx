@@ -1,27 +1,31 @@
-import { customBoxStyle } from 'styles/Home';
-import { Box, RootRefTest } from 'components';
-import { Ref, useRef } from 'react';
+import { css } from 'styled-components';
+import { Box, UserCard } from 'components';
+import { Github, Linkedin } from 'components/icons';
 
 export default function Home() {
 
-	const myRef: Ref<HTMLDivElement> = useRef();
-
-	const onClickRefItem = () => {
-		myRef.current.style.backgroundColor = 'tomato';
-	};
-
 	return (
-		<div>
-			<main>
-				<Box
-					customStyle={customBoxStyle}
-				>
-					test
+		<Box.Center>
+			<UserCard>
+				<UserCard.ImageWrapper>
+					<img src='/assets/img/profile.jpg' alt='user profile' />
+				</UserCard.ImageWrapper>
+
+				<Box customStyle={css`
+					  margin-left: 15px;
+						padding: 10px 0;
+				`}>
+					<UserCard.InfoHeader>
+						<UserCard.Title>Ali Selçuk</UserCard.Title>
+						<UserCard.SubTitle>Frontend Developer</UserCard.SubTitle>
+					</UserCard.InfoHeader>
+
+					<UserCard.InfoLinks>
+						<Github width='22px' height='22px' strokeWidth='2' />
+						<Linkedin width='22px' height='22px' strokeWidth='2' />
+					</UserCard.InfoLinks>
 				</Box>
-				<RootRefTest ref={myRef} onClick={onClickRefItem}>
-					deneme 2
-				</RootRefTest>
-			</main>
-		</div>
+			</UserCard>
+		</Box.Center>
 	);
 }
