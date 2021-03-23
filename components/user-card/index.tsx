@@ -1,5 +1,5 @@
 import { HTMLElementProps } from 'core';
-import { Container, ImageWrapper, InfoHeader, InfoLinks, SubTitle, Title } from './styles/UserCard';
+import { Container, ImageWrapper, InfoHeader, InfoLinks, SubText, Title } from './styles/UserCard';
 
 
 export default function UserCard({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
@@ -19,8 +19,8 @@ UserCard.Title = function UserCardTitle({ children, customStyle, ...props }: HTM
   return <Title {...props} customStyle={customStyle}>{children}</Title>;
 };
 
-UserCard.SubTitle = function UserCardSubTitle({ children, customStyle, ...props }: HTMLElementProps<'span'>) {
-  return <SubTitle {...props} customStyle={customStyle}>{children}</SubTitle>;
+UserCard.SubText = function UserCardSubText({ children, customStyle, ...props }: HTMLElementProps<'span'>) {
+  return <SubText {...props} customStyle={customStyle}>{children}</SubText>;
 };
 
 UserCard.InfoLinks = function UserCardInfoLinks({ children, customStyle, ...props }: HTMLElementProps<'div'>) {

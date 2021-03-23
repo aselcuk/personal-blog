@@ -8,9 +8,9 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.cardBgColor};
 
   ${({ theme }) => !theme.isDark && css`
-    -webkit-box-shadow: 0px 1px 3px 0px ${theme.colors.borderColor};
-    -moz-box-shadow: 0px 1px 3px 0px ${theme.colors.borderColor};
-    box-shadow: 0px 1px 3px 0px ${theme.colors.borderColor};
+    -webkit-box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
+    -moz-box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
+    box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
   `
   }
   
@@ -39,13 +39,14 @@ export const InfoHeader = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Title = styled.span`
+export const Title = styled.h1`
+  margin: 0;
   font-size: 18px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primaryTextColor};
 `;
 
-export const SubTitle = styled.span`
+export const SubText = styled.span`
   font-size: 12px;
   margin-left: 5px;
   color: ${({ theme }) => theme.colors.subTextColor};

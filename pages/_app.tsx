@@ -1,12 +1,12 @@
 import { GlobalStyles } from 'global-styles';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'styles/theme';
+import { darkTheme, theme } from 'styles/theme';
 
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
 
       <Head>
         <title>Frontend Next App</title>
