@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { ArticleCard, Box } from 'styled';
 
-export default function ArticleCardContainer() {
+export default function ArticleCardItem() {
   return (
     <ArticleCard>
       <Box>

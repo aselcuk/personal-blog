@@ -1,9 +1,9 @@
-import { SwitchContainer } from 'components';
+import { SwitchTheme } from 'components';
 import { css } from 'styled-components';
 import { Box, UserCard } from 'styled';
 import { Github, Linkedin } from 'styled/icons';
 
-export default function UserCardContainer() {
+export default function UserCardItem() {
 
   return (
     <Box customStyle={css`position: relative;`}>
@@ -28,7 +28,7 @@ export default function UserCardContainer() {
         </Box>
       </UserCard>
       <Box customStyle={css`position: absolute; right: 20px; top: -10px;`}>
-        <SwitchContainer />
+        <SwitchTheme />
       </Box>
     </Box>
   );

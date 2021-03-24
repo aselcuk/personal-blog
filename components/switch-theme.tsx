@@ -1,10 +1,24 @@
+import { ThemeContext } from 'context/ThemeContext';
 import { css } from 'styled-components';
-import { useState } from 'react';
 import { Box, Switch } from 'styled';
 import { Moon, Sun } from 'styled/icons';
+import { darkTheme, defaultTheme } from 'styles/theme';
+import { useContext, useEffect, useState } from 'react';
 
-export default function SwitchContainer() {
-  const [isToggled, setIsToggled] = useState(false);
+export default function SwitchTheme() {
+  const [isToggled, setIsToggled] = useState(true);
+
+  const { setTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+
+    if (isToggled) {
+      setTheme(defaultTheme);
+    } else {
+      setTheme(darkTheme);
+    }
+
+  }, [isToggled, setTheme]);
 
   return (
     <>

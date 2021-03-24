@@ -1,12 +1,12 @@
 import { Box } from 'styled';
-import { ArticleCardContainer, UserCardContainer } from 'components';
+import { ArticleCardItem, UserCardItem } from 'components';
 
 export default function Home() {
 
 	return (
 		<Box.Center>
-			<UserCardContainer />
-			<ArticleCardContainer />
+			<UserCardItem />
+			<ArticleCardItem />
 		</Box.Center>
 	);
 }
