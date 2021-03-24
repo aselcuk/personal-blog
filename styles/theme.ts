@@ -14,7 +14,7 @@ export const darkTheme = {
     colors: {
         bgColor: '#3a3a3a',
         borderColor: '#B6B6B6',
-        cardBgColor: '#666666',
+        cardBgColor: '#484848',
         primaryTextColor: '#FFFFFF',
         secondaryTextColor: '#FF82EB',
         subTextColor: '#C4C4C4'

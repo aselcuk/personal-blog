@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { useState } from 'react';
-import { Box, Switch } from 'components';
-import { Moon, Sun } from 'components/icons';
+import { Box, Switch } from 'styled';
+import { Moon, Sun } from 'styled/icons';
 
 export default function SwitchContainer() {
   const [isToggled, setIsToggled] = useState(false);

@@ -1,7 +1,7 @@
-import { SwitchContainer } from 'containers';
+import { SwitchContainer } from 'components';
 import { css } from 'styled-components';
-import { Box, UserCard } from 'components';
-import { Github, Linkedin } from 'components/icons';
+import { Box, UserCard } from 'styled';
+import { Github, Linkedin } from 'styled/icons';
 
 export default function UserCardContainer() {
 

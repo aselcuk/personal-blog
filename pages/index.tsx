@@ -1,5 +1,5 @@
-import { Box } from 'components';
-import { ArticleCardContainer, UserCardContainer } from 'containers';
+import { Box } from 'styled';
+import { ArticleCardContainer, UserCardContainer } from 'components';
 
 export default function Home() {
 

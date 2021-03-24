@@ -5,14 +5,14 @@
       "components/*": [
         "components/*"
       ],
-      "containers/*": [
-        "containers/*"
-      ],
       "constants/*": [
         "constants/*"
       ],
       "models/*": [
         "models/*"
+      ],
+      "styled/*": [
+        "styled/*"
       ]
     },
     "target": "es5",
