@@ -1,4 +1,9 @@
-export const defaultTheme = {
+export type Theme = {
+    colors: unknown;
+    isDark: boolean;
+}
+
+export const defaultTheme: Theme = {
     colors: {
         bgColor: '#F6F6F6',
         borderColor: '#B6B6B6',
@@ -10,7 +15,7 @@ export const defaultTheme = {
     isDark: false
 };
 
-export const darkTheme = {
+export const darkTheme: Theme = {
     colors: {
         bgColor: '#3a3a3a',
         borderColor: '#B6B6B6',
