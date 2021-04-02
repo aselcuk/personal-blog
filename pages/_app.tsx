@@ -2,7 +2,7 @@ import { GlobalStyles } from 'global-styles';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
-import { darkTheme, defaultTheme } from 'styles/theme';
+import { darkTheme, defaultTheme } from 'styled/theme';
 import { useEffect, useState } from 'react';
 
 
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
         <meta name='viewport' content='width=device-width,initial-scale=1' />
       </Head>
       
-      <GlobalStyles />
+      <GlobalStyles mounted={mounted} />
       {mounted && <Component {...pageProps} />}
     </ThemeProvider>
   );
