@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
       font-size: 16px;
       background-color: ${({ theme }) => theme.colors.bgColor};
       transition: ${props => props.mounted ? 'background-color .2s linear;' : ''};
+      visibility: ${props => !props.mounted ? 'hidden;' : 'unset'};
   }
 
   a {
