@@ -28,7 +28,7 @@ export const Content = styled.div`
   ${({ customStyle }) => customStyle};
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   margin: 0;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
@@ -42,7 +42,7 @@ export const Title = styled.h1`
   ${({ customStyle }) => customStyle};
 `;
 
-export const Description = styled.p`
+export const Summary = styled.p`
   margin: 0;
   margin-top: 10px;
   color: ${({ theme }) => theme.colors.primaryTextColor};
