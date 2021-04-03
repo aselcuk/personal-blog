@@ -18,9 +18,9 @@ export default function ArticleDetail({ post, content }) {
         <ArticleCard.ContentWrapper>
 
           <ArticleCard.Header>
-            <ArticleCard.Title>
+            <ArticleCard.DetailTitle>
               {post.frontMatter.title}
-            </ArticleCard.Title>
+            </ArticleCard.DetailTitle>
             <ArticleCard.SubText>
               {post.frontMatter.date}
               <ArticleCard.SubText customStyle={css`margin-left: 5px;`}>• {post.frontMatter.readingTime}</ArticleCard.SubText>

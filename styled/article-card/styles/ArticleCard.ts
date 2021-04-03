@@ -36,7 +36,7 @@ export const Content = styled.div`
   transition: color .2s linear;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h3`
   margin: 0;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
@@ -49,6 +49,15 @@ export const Title = styled.h2`
   }
 
   ${({ customStyle }) => customStyle};
+`;
+
+export const DetailTitle = styled.h1`
+  margin: 0;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.secondaryTextColor};
+  transition: color .2s linear;
+  cursor: pointer;
+  width: 95%;
 `;
 
 export const Summary = styled.p`
