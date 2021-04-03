@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/macro';
 
-export const Container = styled.div`
+export const Container = styled.article`
   display: flex;
   padding: 12px 30px;
   margin: 30px 10px;
@@ -18,6 +18,9 @@ export const Container = styled.div`
   ${({ customStyle }) => customStyle};
 `;
 
+export const Header = styled.div`
+`;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,7 +28,7 @@ export const Content = styled.div`
   ${({ customStyle }) => customStyle};
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   margin: 0;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
@@ -38,7 +41,8 @@ export const Title = styled.h2`
   ${({ customStyle }) => customStyle};
 `;
 
-export const Description = styled.span`
+export const Description = styled.p`
+  margin: 0;
   margin-top: 10px;
   color: ${({ theme }) => theme.colors.primaryTextColor};
   transition: color .2s linear;

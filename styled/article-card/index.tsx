@@ -1,10 +1,14 @@
 import { HTMLElementProps } from 'core';
-import { Container, Content, Description, SubText, Title } from './styles/ArticleCard';
+import { Container, Content, Description, Header, SubText, Title } from './styles/ArticleCard';
 
 
 export default function ArticleCard({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
   return <Container {...props} customStyle={customStyle}>{children}</Container>;
 }
+
+ArticleCard.Header = function ArticleCardHeader({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
+  return <Header {...props} customStyle={customStyle}>{children}</Header>;
+};
 
 ArticleCard.Content = function ArticleCardContent({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
   return <Content {...props} customStyle={customStyle}>{children}</Content>;

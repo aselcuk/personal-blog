@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
 
       <Head>
-        <title>Frontend Next App</title>
+        <title>Ali Selçuk | Blog</title>
         <link rel='icon' href='/favicon.ico' />
         <meta name='viewport' content='width=device-width,initial-scale=1' />
       </Head>

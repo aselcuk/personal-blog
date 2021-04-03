@@ -14,7 +14,7 @@ export default function UserCardItem() {
 
         <Box customStyle={css`
             margin-left: 15px;
-            padding: 10px 0;
+            padding: 5px 0;
         `}>
           <UserCard.InfoHeader>
             <UserCard.Title>Ali Selçuk</UserCard.Title>

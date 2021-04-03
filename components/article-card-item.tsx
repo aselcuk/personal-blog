@@ -6,17 +6,16 @@ export default function ArticleCardItem() {
     <ArticleCard>
       <Box>
         <ArticleCard.Content>
-          
-          <Box customStyle={css`display: flex; align-items: center;`}>
+
+          <ArticleCard.Header>
             <ArticleCard.Title>
               A Peek Into Scandinavia's Origin
             </ArticleCard.Title>
-            <ArticleCard.SubText customStyle={css`margin: 4px 0 0 10px;`}>28 may 2020</ArticleCard.SubText>
-          </Box>
-
-          <ArticleCard.SubText>
-            3 min. ☕
-          </ArticleCard.SubText>
+            <ArticleCard.SubText>
+              28 may 2020
+              <ArticleCard.SubText customStyle={css`margin-left: 5px;`}>• 3 min. ☕</ArticleCard.SubText>
+            </ArticleCard.SubText>
+          </ArticleCard.Header>  
 
           <ArticleCard.Description>
             Steve Holt! No, I did not kill Kitty. However, I am going to oblige and answer the nice officer’s questions because I am

@@ -30,12 +30,23 @@ export const ImageWrapper = styled.div`
       border: 1px solid ${({ theme }) => theme.colors.borderColor};
       transition: all .2s linear;
     }
+
+    ${({ theme }) => theme.isDark && css`
+      filter: sepia(0.3);
+      transition: filter .2s linear;
+    `
+  }
 `;
 
 export const InfoHeader = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+
+  @media (max-width: 40rem) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const Title = styled.h1`
@@ -48,9 +59,14 @@ export const Title = styled.h1`
 
 export const SubText = styled.span`
   font-size: 12px;
+  margin-top: 2px;
   margin-left: 5px;
   color: ${({ theme }) => theme.colors.subTextColor};
   transition: color .2s linear;
+
+  @media (max-width: 40rem) {
+    margin-left: unset;
+  }
 `;
 
 export const InfoLinks = styled.div`
@@ -69,5 +85,7 @@ export const InfoLinks = styled.div`
     &:hover {
       color: ${({ theme }) => theme.colors.secondaryTextColor};
     }
+
+    transition: all .2s linear;
   }
 `;
