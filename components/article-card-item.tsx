@@ -12,7 +12,7 @@ export default function ArticleCardItem() {
             <Link href='/detail'>
               <ArticleCard.Title>
                 A Peek Into Scandinavia's Origin
-            </ArticleCard.Title>
+              </ArticleCard.Title>
             </Link>
             <ArticleCard.SubText>
               28 may 2020

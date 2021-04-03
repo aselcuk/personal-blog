@@ -1,5 +1,6 @@
-import { HTMLElementProps } from 'core';
+import React from 'react';
 import { Container, Content, Description, Header, SubText, Title } from './styles/ArticleCard';
+import { HTMLElementProps, HTMLElementPropsWithRef } from 'core';
 
 
 export default function ArticleCard({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
@@ -18,9 +19,9 @@ ArticleCard.Description = function ArticleCardDescription({ children, customStyl
   return <Description {...props} customStyle={customStyle}>{children}</Description>;
 };
 
-ArticleCard.Title = function ArticleCardTitle({ children, customStyle, ...props }: HTMLElementProps<'h2'>) {
-  return <Title {...props} customStyle={customStyle}>{children}</Title>;
-};
+ArticleCard.Title = React.forwardRef(({ children, customStyle, ...props }: HTMLElementPropsWithRef<'h1'>, ref) => {
+  return <Title ref={ref} {...props} customStyle={customStyle}>{children}</Title>;
+});
 
 ArticleCard.SubText = function ArticleCardSubText({ children, customStyle, ...props }: HTMLElementProps<'span'>) {
   return <SubText {...props} customStyle={customStyle}>{children}</SubText>;
