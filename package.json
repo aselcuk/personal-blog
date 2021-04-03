@@ -5,7 +5,7 @@
   "author": "Ali SELÇUK",
   "description": "Personal blog project",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./**/*.{ts,tsx}",
@@ -31,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "babel-plugin-macros": "^3.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.22.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",

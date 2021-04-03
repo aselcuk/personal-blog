@@ -6,13 +6,23 @@ import { Moon, Sun } from 'styled/icons';
 export default function SwitchTheme() {
   const darkMode = useDarkMode(false);
 
+  const onSwitch = () => {
+    const body = document.querySelector('body');
+
+    if (body) {
+      body.style.transition = 'background .2s linear';
+    }
+
+    darkMode.toggle();
+  };
+
   return (
     <>
       <Switch.Input
         className='switch-checkbox'
         type='checkbox'
         id='theme-switch'
-        onChange={darkMode.toggle}
+        onChange={onSwitch}
         checked={darkMode.value}
       />
       <Switch.Label className='switch-label' htmlFor='theme-switch'>

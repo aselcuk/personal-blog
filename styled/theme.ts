@@ -1,5 +1,12 @@
 export type Theme = {
-    colors: unknown;
+    colors: {
+        bgColor: string;
+        borderColor: string;
+        cardBgColor: string;
+        primaryTextColor: string;
+        secondaryTextColor: string;
+        subTextColor: string;
+    };
     isDark: boolean;
 }
 
