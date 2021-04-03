@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Header, SubText, Summary, Title } from './styles/ArticleCard';
+import { Container, Content, ContentWrapper, Header, SubText, Summary, Title } from './styles/ArticleCard';
 import { HTMLElementProps, HTMLElementPropsWithRef } from 'core';
 
 
@@ -9,6 +9,10 @@ export default function ArticleCard({ children, customStyle, ...props }: HTMLEle
 
 ArticleCard.Header = function ArticleCardHeader({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
   return <Header {...props} customStyle={customStyle}>{children}</Header>;
+};
+
+ArticleCard.ContentWrapper = function ArticleCardContentWrapper({ children, customStyle, ...props }: HTMLElementProps<'div'>) {
+  return <ContentWrapper {...props} customStyle={customStyle}>{children}</ContentWrapper>;
 };
 
 ArticleCard.Content = function ArticleCardContent({ children, customStyle, ...props }: HTMLElementProps<'div'>) {

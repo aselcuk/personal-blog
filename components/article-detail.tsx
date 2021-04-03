@@ -1,29 +1,35 @@
+import { CornerUpLeft } from 'styled/icons';
 import Link from 'next/link';
 import { css } from 'styled-components';
-import { ArticleCard, Box } from 'styled';
+import { ArticleCard, BackButton, Box } from 'styled';
 
-export default function ArticleCardItem({ post }) {
+export default function ArticleDetail({ post, content }) {
 
   return (
     <ArticleCard>
+
+      <Link href='/'>
+        <BackButton>
+          <CornerUpLeft width='20px' height='20px' strokeWidth='2' />
+        </BackButton>
+      </Link>
+
       <Box>
         <ArticleCard.ContentWrapper>
 
           <ArticleCard.Header>
-            <Link href={post.url}>
-              <ArticleCard.Title>
-                {post.frontMatter.title}
-              </ArticleCard.Title>
-            </Link>
+            <ArticleCard.Title>
+              {post.frontMatter.title}
+            </ArticleCard.Title>
             <ArticleCard.SubText>
               {post.frontMatter.date}
               <ArticleCard.SubText customStyle={css`margin-left: 5px;`}>• {post.frontMatter.readingTime}</ArticleCard.SubText>
             </ArticleCard.SubText>
           </ArticleCard.Header>
 
-          <ArticleCard.Summary>
-            {post.frontMatter.excerpt}
-          </ArticleCard.Summary>
+          <ArticleCard.Content>
+            {content}
+          </ArticleCard.Content>
 
         </ArticleCard.ContentWrapper>
       </Box>

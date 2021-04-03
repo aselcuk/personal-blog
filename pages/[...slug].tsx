@@ -1,3 +1,5 @@
+import ArticleDetail from 'components/article-detail';
+import { Box } from 'styled';
 import { mdxComponents } from 'components/mdx-components';
 import { useHydrate } from 'next-mdx/client';
 import { getMdxNode, getMdxPaths } from 'next-mdx/server';
@@ -8,9 +10,9 @@ export default function Detail({ post }) {
   });
 
   return (
-    <div>
-      {content}
-    </div>
+    <Box.Center>
+      <ArticleDetail post={post} content={content} />
+    </Box.Center>
   );
 }
 

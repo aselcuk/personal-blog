@@ -7,6 +7,7 @@ export const Container = styled.article`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.cardBgColor};
   transition: background-color .2s linear;
+  position: relative;
 
   ${({ theme }) => !theme.isDark && css`
     -webkit-box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
@@ -21,11 +22,18 @@ export const Container = styled.article`
 export const Header = styled.div`
 `;
 
-export const Content = styled.div`
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
   ${({ customStyle }) => customStyle};
+`;
+
+export const Content = styled.div`
+  margin: 0;
+  margin-top: 10px;
+  color: ${({ theme }) => theme.colors.primaryTextColor};
+  transition: color .2s linear;
 `;
 
 export const Title = styled.h2`
@@ -34,6 +42,7 @@ export const Title = styled.h2`
   color: ${({ theme }) => theme.colors.secondaryTextColor};
   transition: color .2s linear;
   cursor: pointer;
+  width: 95%;
 
   &:hover {
     filter: blur(1px);
