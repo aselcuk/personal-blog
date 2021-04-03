@@ -33,6 +33,7 @@ export const Title = styled.h1`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
   transition: color .2s linear;
+  cursor: pointer;
 
   &:hover {
     filter: blur(1px);

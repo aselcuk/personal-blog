@@ -24,8 +24,6 @@ export const ImageWrapper = styled.div`
     height: 80px;
 
     img {
-      width: 80px;
-      height: 80px;
       border-radius: 99px;
       border: 1px solid ${({ theme }) => theme.colors.borderColor};
       transition: all .2s linear;
@@ -73,19 +71,22 @@ export const InfoLinks = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
-  transition: color .2s linear;
 
-  svg {
-    color: ${({ theme }) => theme.colors.primaryTextColor};
-
+  a {
     &:last-child {
       margin-left: 10px;
     }
+  }
+`;
+
+export const InfoLinkItem = styled.a`
+  svg {
+    color: ${({ theme }) => theme.colors.primaryTextColor};
 
     &:hover {
       color: ${({ theme }) => theme.colors.secondaryTextColor};
     }
 
-    transition: all .2s linear;
+    transition: color .2s linear;
   }
 `;

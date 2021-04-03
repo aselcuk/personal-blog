@@ -24,7 +24,8 @@
     "ignorePatterns": [
         "__tests__/*",
         "jest.config.js",
-        "babel.config.js"
+        "babel.config.js",
+        "next.config.js"
     ],
     "rules": {
         "quotes": [

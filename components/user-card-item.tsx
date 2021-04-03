@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { SwitchTheme } from 'components';
 import { css } from 'styled-components';
 import { Box, UserCard } from 'styled';
@@ -9,7 +10,7 @@ export default function UserCardItem() {
     <Box customStyle={css`position: relative;`}>
       <UserCard>
         <UserCard.ImageWrapper>
-          <img src='/assets/img/profile.jpg' alt='user profile' />
+          <Image src='/assets/img/profile.jpg' alt='user profile' width='80px' height='80px' />
         </UserCard.ImageWrapper>
 
         <Box customStyle={css`
@@ -22,9 +23,15 @@ export default function UserCardItem() {
           </UserCard.InfoHeader>
 
           <UserCard.InfoLinks>
-            <Github width='22px' height='22px' strokeWidth='2' />
-            <Linkedin width='22px' height='22px' strokeWidth='2' />
+            <UserCard.InfoLinkItem href='https://github.com/aselcuk' target='_blank'>
+              <Github width='22px' height='22px' strokeWidth='2' />
+            </UserCard.InfoLinkItem>
+
+            <UserCard.InfoLinkItem href='https://www.linkedin.com/in/ali-selcuk/' target='_blank'>
+              <Linkedin width='22px' height='22px' strokeWidth='2' />
+            </UserCard.InfoLinkItem>
           </UserCard.InfoLinks>
+
         </Box>
       </UserCard>
       <Box customStyle={css`position: absolute; right: 20px; top: -10px;`}>
