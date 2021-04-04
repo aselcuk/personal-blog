@@ -5,7 +5,8 @@
   "author": "Ali SELÇUK",
   "description": "Personal blog project",
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
+    "dev:debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./**/*.{ts,tsx}",
@@ -19,6 +20,7 @@
   "dependencies": {
     "next": "^10.1.3",
     "next-mdx": "^0.6.0",
+    "prism-react-renderer": "^1.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.2.1",

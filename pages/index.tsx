@@ -1,17 +1,21 @@
 import { Box } from 'styled';
+import { css } from 'styled-components';
 import { getAllNodes } from 'next-mdx/server';
-import { ArticleCardItem, UserCardItem } from 'components';
+import { ArticleCardItem, Footer, UserCardItem } from 'components';
 
 export default function Home({ posts }) {
 
 	return (
-		<Box.Center>
+		<Box.Center
+
+		>
 			<UserCardItem />
 			{
 				posts.map((post) => (
 					<ArticleCardItem key={post.hash} post={post} />
 				))
 			}
+			<Footer />
 		</Box.Center>
 	);
 }

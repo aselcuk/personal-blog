@@ -1,6 +1,6 @@
 ---
-title: A Long-expected Party
-excerpt: Gandalf arrives in the Shire for Bilbo's Farewell Birthday Party. Bilbo leaves the Shire permanently.
+title: React ile Server Side Rendering Nasıl Yapılır?
+excerpt: React, TypeScript, webpack ve express ile server side rendering işlemleri.
 image: /images/placeholder.jpg
 author:
   - Ali Selçuk
@@ -9,10 +9,63 @@ date: "2021-03-02"
 readingTime: "3 min. ☕"
 ---
 
-Placeat consequuntur ullam aut sapiente illo velit. Eius facere ut molestias totam laborum pariatur quam. Praesentium quo veritatis expedita animi.
+Bu yazıda React, TypeScript, Webpack ve Node.js(express) ile server side rendering nasıl yapılır anlatmaya çalışacağım. Öncelikle çalışacağımız
+klasöre geçip
 
-Quite anything glass benefit. Such form clearly top tend can require my. Federal degree sort performance region maintain.
+`npm init --y` diyerek npm'i projemize dahil edelim. `src` adında bir klasör oluşturup içerisine `public` adında bir klasör daha oluşturalım. Bu klasör içerisine ise
+`index.html` adında html dosyamızı oluşturalım. 
 
-Ut dignissimos sapiente culpa rerum pariatur consequatur. Corporis suscipit ad corrupti aut. Expedita culpa aut deleniti officiis.
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-Porro eum id sit quia expedita. Alias expedita asperiores. Corporis ex eum atque cum ea.
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React & TypeScript Peoject App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
+```
+
+Ardından react ve typescript'i ekleyelim. **TypeScript** ile ilgili olanları **devDependencies** olarak ekleyelim.
+
+```bash
+npm install react react-dom
+
+npm install --save-dev typescript @types/react @types/react-dom
+```
+
+TypeScript için `tsconfig.json` dosyasını oluşturalım.
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "CommonJS",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react"
+  },
+  "include": [
+    "src"
+  ]
+}
+```

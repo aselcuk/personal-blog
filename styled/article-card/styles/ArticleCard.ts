@@ -34,6 +34,12 @@ export const Content = styled.div`
   margin-top: 10px;
   color: ${({ theme }) => theme.colors.primaryTextColor};
   transition: color .2s linear;
+
+  pre[class*=language-] {
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
 `;
 
 export const Title = styled.h3`
