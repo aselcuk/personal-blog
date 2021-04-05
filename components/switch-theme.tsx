@@ -10,7 +10,7 @@ export default function SwitchTheme() {
     const body = document.querySelector('body');
 
     if (body) {
-      body.style.transition = 'background .2s linear';
+      body.style.transition = 'background .1s linear';
     }
 
     darkMode.toggle();

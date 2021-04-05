@@ -6,7 +6,7 @@ export const Container = styled.article`
   margin: 30px 10px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.cardBgColor};
-  transition: background-color .2s linear;
+  transition: background-color .1s linear;
   position: relative;
 
   ${({ theme }) => !theme.isDark && css`
@@ -33,7 +33,7 @@ export const Content = styled.div`
   margin: 0;
   margin-top: 10px;
   color: ${({ theme }) => theme.colors.primaryTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
 
   pre[class*=language-] {
     overflow: auto;
@@ -46,7 +46,7 @@ export const Title = styled.h3`
   margin: 0;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
   cursor: pointer;
   width: 95%;
 
@@ -61,7 +61,7 @@ export const DetailTitle = styled.h1`
   margin: 0;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.secondaryTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
   cursor: pointer;
   width: 95%;
 `;
@@ -70,7 +70,7 @@ export const Summary = styled.p`
   margin: 0;
   margin-top: 10px;
   color: ${({ theme }) => theme.colors.primaryTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
 
   ${({ customStyle }) => customStyle};
 `;
@@ -79,7 +79,7 @@ export const SubText = styled.span`
   font-size: 11px;
   margin-top: 2px;
   color: ${({ theme }) => theme.colors.subTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
 
   ${({ customStyle }) => customStyle};
 `;

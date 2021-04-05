@@ -6,13 +6,13 @@ export const Container = styled.div`
   margin: 30px 10px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.cardBgColor};
-  transition: background-color .2s linear;
+  transition: background-color .1s linear;
 
   ${({ theme }) => !theme.isDark && css`
     -webkit-box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
     -moz-box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
     box-shadow: 0px 0px 1px 0px ${theme.colors.borderColor};
-    transition: all .2s linear;
+    transition: all .1s linear;
   `
   }
   
@@ -26,12 +26,12 @@ export const ImageWrapper = styled.div`
     img {
       border-radius: 99px;
       border: 1px solid ${({ theme }) => theme.colors.borderColor};
-      transition: all .2s linear;
+      transition: all .1s linear;
     }
 
     ${({ theme }) => theme.isDark && css`
       filter: sepia(0.3);
-      transition: filter .2s linear;
+      transition: filter .1s linear;
     `
   }
 `;
@@ -52,7 +52,7 @@ export const Title = styled.h1`
   font-size: 18px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primaryTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
 `;
 
 export const SubText = styled.span`
@@ -60,7 +60,7 @@ export const SubText = styled.span`
   margin-top: 2px;
   margin-left: 5px;
   color: ${({ theme }) => theme.colors.subTextColor};
-  transition: color .2s linear;
+  transition: color .1s linear;
 
   @media (max-width: 40rem) {
     margin-left: unset;
@@ -87,6 +87,6 @@ export const InfoLinkItem = styled.a`
       color: ${({ theme }) => theme.colors.secondaryTextColor};
     }
 
-    transition: color .2s linear;
+    transition: color .1s linear;
   }
 `;

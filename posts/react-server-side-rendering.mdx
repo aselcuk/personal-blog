@@ -1,0 +1,504 @@
+---
+title: React ve TypeScript ile Server Side Rendering Nasıl Yapılır?
+excerpt: React, TypeScript, Webpack, ve Node.js ile routing bazlı server side rendering işlemleri.
+image: /images/placeholder.jpg
+author:
+  - Ali Selçuk
+featured: true
+date: "05-04-2021"
+readingTime: " 30 dk. ☕☕☕☕😉"
+---
+
+Bu yazıda React, TypeScript, Webpack ve Node.js(express) ile routing bazlı server side rendering nasıl yapılır anlatmaya çalışacağım. Öncelikle çalışacağımız
+klasöre geçip
+
+`npm init --y` diyerek npm'i projemize dahil edelim. `src` adında bir klasör oluşturup içerisine `public` adında bir klasör daha oluşturalım. Bu klasör içerisine ise
+`index.html` adında html dosyamızı oluşturalım. 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React & TypeScript Peoject App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
+```
+
+Ardından react ve typescript'i ekleyelim. **TypeScript** ile ilgili olanları **devDependencies** olarak ekleyelim.
+
+```bash
+npm install react react-dom
+
+npm install --save-dev typescript @types/react @types/react-dom
+```
+
+TypeScript için `tsconfig.json` dosyasını oluşturalım.
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "CommonJS",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react"
+  },
+  "include": [
+    "src"
+  ]
+}
+```
+
+`src` altına `index.tsx` dosyasını oluşturalım ve içerisini aşağıdaki gibi dolduralım. Bu dosya **root** dosyamız olacaktır.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <React.StrictMode>
+      <div>Hello React</div>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+React ve TypeScript kodlarımızın JavaScript'e dönüştürülmesi ve çalışabilmesi için
+**babel** ayalarını yapmamız gerekiyor bu nedenle aşağıdaki paketleri projeye dahil
+edelim. Babel ile ilgili bilgi için [Babel](https://babeljs.io/docs/en/) sitesine göz
+atabilirsiniz.
+
+```bash
+npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime @babel/runtime
+```
+
+root dizinde `.babelrc` adında bir dosya oluşturalım ve aşağıdaki ayarları ekleyelim.
+
+```json
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}
+```
+
+bu ayarlardan sonra projeyi ayağa kaldırmak için ilgili **webpack** paketlerini ve ayarlarını ekleyelim. Daha fazla bilgi almak
+için [Webpack](https://webpack.js.org/) sitesine göz atabilirsiniz.
+
+```bash
+npm install --save-dev webpack webpack-cli @types/webpack webpack-dev-server @types/webpack-dev-server
+```
+
+webpack'in React ve TypeScript kodlarımızı anlayıp JavaScript'e nakledebilmesi için `babel-loader`'ı ekleyelim.
+
+```bash
+npm install --save-dev babel-loader
+```
+
+proje içerisinde TypeScript kullanabilmek için `ts-node` paketini projeye ekleyelim.
+
+```bash
+npm install --save-dev ts-node
+```
+
+webpack içerisinde ilgili html dosyamızın bulunabilmesi için `html-webpack-plugin` paketini ekleyelim.
+
+```bash
+npm install --save-dev html-webpack-plugin
+```
+
+root dizinde `webpack.common.js` adında bir dosya oluşturalım ve aşağıdaki ayarları ekleyelim.
+
+```javascript
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  mode: "development",
+  entry: path.join(__dirname, "src/index.tsx"),
+  devtool: "inline-source-map",
+  devServer: {
+    historyApiFallback: true,
+    port: 4000,
+    open: true,
+    hot: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|js)x?$/i,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src", "public/index.html"),
+    }),
+  ]
+};
+```
+
+tüm bu ayalardan sonra `package.json` içerisinde `scripts` bölümünü düzenleyelim.
+
+```json
+  "scripts": {
+    "start": "webpack serve --config webpack.common.js"
+  },
+```
+
+son olarak terminali açalım ve `npm start` diyerek projeyi çalıştıralım ve ekranda 'Hello React' yazımızı görelim.
+
+![Hello React](/assets/img/posts/react-server-side-rendering/hello-react.png)
+
+projenin temel folder yapısı aşağıdaki gibidir.
+
+![Base Folder Structure](/assets/img/posts/react-server-side-rendering/base-folder-structure.jpg)
+
+<Divider />
+
+**buraya kadar yaptığımız tüm ayarlar temel bir react projesini webpack ile nasıl ayağa kaldırabiliriz bu işlemleri içermekteydi. Henüz server side rendering ile ilgili birşey yapmadık.
+Projemize server side rendering eklemeden önce ilgili paketleri projemize ekleyelim.**
+
+yapacağımız server sadece render işlemi değil **routing** işlemlerini de içeriyor olacaktır.
+
+```bash
+npm install express cors react-router-dom serialize-javascript
+```
+
+root dizinde `server` adında bir klasör oluşturup içerisine `index.js` adında bir dosya oluşturalım. Aşağıdaki kodları bu dosya içerisine ekleyelim.
+
+```javascript
+import express from 'express';
+import cors from 'cors';
+import React from 'react';
+import ReactDOM from 'react-dom/server';
+import { StaticRouter, matchPath } from 'react-router-dom';
+import serialize from 'serialize-javascript';
+import App from '../src/App';
+import { routes } from '../src/routes';
+
+const app = express()
+
+app.use(cors())
+app.use(express.static('build'))
+
+app.get('*', async (req, res) => {
+
+  const activeRoute = routes && routes.find((route) => matchPath(req.url, route));
+  let initalData;
+
+  if (activeRoute && activeRoute.fetchInitialData) {
+    const fetchedInitialData = await activeRoute.fetchInitialData(req.path);
+
+    initalData = fetchedInitialData;
+  }
+
+  const markup = ReactDOM.renderToString(
+    <StaticRouter location={req.url} context={{ initalData }}>
+      <App />
+    </StaticRouter>
+  )
+
+  const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React & TypeScript Peoject App</title>
+        <link href="/main.css" rel="stylesheet">
+        <script defer src="/client.js"></script>
+        <script>window.__INITIAL_DATA__ = ${serialize(initalData)}</script>
+      </head>
+      <body>
+        <div id="root">${markup}</div>
+      </body>
+    </html>
+  `;
+
+  res.send(html);
+
+})
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port: ${PORT}`)
+})
+```
+
+henüz routing eklemediğimiz için `src` altına `routes.ts` adında bir dosya oluşturalım. Proje içerisinde kullanacağımız tüm routing tanımlamalarını bu dosya içerisinde yapıyor olacağız.
+
+routes dosyasını aşağıdaki gibi düzenleyelim.
+
+```javascript
+import Home from './pages/Home';
+
+
+export type IRoute = {
+  path: string;
+  exact?: boolean;
+  component: (props) => JSX.Element
+}
+
+export const routes: IRoute[] = [
+  {
+    component: Home,
+    exact: true,
+    path: '/',
+  }
+];
+
+```
+
+bu dosya içerisinde `Home` adında bir sayfa çağırdık ancak henüz bu sayfamızı oluşturmadık. `src` altına `pages` adında bir klasör oluşturalım ve içerisine `Home.tsx` adında ilk sayfamızı ekleyelim.
+İçerisini basitçe dolduralım.
+
+```javascript
+import React from 'react';
+
+export default function Home() {
+  return (
+    <div>
+      Home Page
+    </div>
+  );
+}
+```
+
+artık routing yapımız olduğu için daha önce `src` içerisinde oluşturduğumuz `index.tsx` dosyamızı güncellememiz gerekiyor. İlgili dosyayı aşağıdaki gibi güncelleyelim.
+
+```javascript
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+bu dosyada çağırdığımız `App.tsx` dosyamız mevcut. Öncelikle bu dosyayı `src` altına oluşturalım. Bu dosya içerisinde `routes` dosyasında eklediğimiz routingleri render edeceğiz.
+aşağıdaki kodu App dosyamıza ekleyelim.
+
+```javascript
+import React from 'react';
+import { IRoute, routes } from './routes';
+import { Route, Switch } from 'react-router-dom';
+
+export default function App() {
+  return (
+    <div>
+
+      <Switch>
+        {routes.map(({ path, exact, component: C }: IRoute) => (
+          <Route key={path} path={path} exact={exact} render={(props) => (
+            <C {...props} />
+          )} />
+        ))}
+
+        <Route path='*'>
+          <div>404 - Aradığınız sayfa bulunamadı.</div>
+        </Route>
+        
+      </Switch>
+    </div>
+  );
+}
+```
+
+şimdi birden fazla webpack dosyası oluşturarak development için olanları ayrı production için olanları ayrı ve ortak olan dosyalar için ayrı ayarları ekleyelim.
+
+root dizinde `webpack.dev.js`, `webpack.prod.js` ve `webpack.config.js` adında 3 dosya daha oluşturalım. (Daha önce oluşturduğumuz `webpack.common.js` dosyasını silmeyin onu da kullanacağız.)
+
+bu dosyalarda kullanacağımız ayarlar için aşağıdaki paketleri projeye ekleyelim. **sass** ile ilgili olan paketler opsiyoneldir, projenizde sass kullanacaksanız ekleyebilirsiniz.
+
+```bash
+npm install --save-dev @pmmmwh/react-refresh-webpack-plugin react-refresh webpack-node-externals clean-webpack-plugin webpack-merge mini-css-extract-plugin css-loader sass sass-loader node-sass
+```
+
+ilk olarak `webpack.common.js` dosyamızı aşağıdaki gibi güncelleyelim.
+
+```javascript
+const path = require("path");
+const { HotModuleReplacementPlugin } = require("webpack");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(ts|js)x?$/i,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.s?css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HotModuleReplacementPlugin(),
+  ],
+};
+```
+
+daha sonra `webpack.config.js` dosyamızı aşağıdaki gibi düzenleyelim.
+
+```javascript
+const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common.js");
+
+module.exports = ({ env }) => {
+  const envConfig = require(`./webpack.${env}.js`);
+
+  if (env === 'prod') {
+    const prod_client_config = merge(commonConfig, envConfig["clientConfig"]);
+    const prod_server_config = merge(commonConfig, envConfig["serverConfig"]);
+
+    return [prod_client_config, prod_server_config];
+  } else {
+    
+    const dev_config = merge(commonConfig, envConfig);
+
+    return dev_config;
+  }
+}
+```
+
+daha sonra `webpack.dev.js` dosyamızı aşağıdaki gibi düzenleyelim.
+
+```javascript
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+module.exports = {
+  mode: "development",
+  entry: path.join(__dirname, "src/index.tsx"),
+  devtool: "inline-source-map",
+  devServer: {
+    historyApiFallback: true,
+    port: 4000,
+    open: true,
+    hot: true
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src", "public/index.html"),
+    }),
+    new ReactRefreshWebpackPlugin(),
+  ],
+};
+```
+
+son olarak `webpack.prod.js` dosyamızı aşağıdaki gibi düzenleyelim.
+
+```javascript
+const path = require('path');
+const nodeExternals = require('webpack-node-externals');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const clientConfig = {
+  mode: "production",
+  entry: path.join(__dirname, "src/index.tsx"),
+  output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "client.js"
+  },
+  target: 'web',
+  devtool: "source-map",
+};
+
+const serverConfig = {
+  mode: "production",
+  entry: path.resolve(__dirname, 'server/index.js'),
+  output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "server.js"
+  },
+  target: "node",
+  externals: [nodeExternals()],
+  devtool: "source-map",
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
+};
+
+
+
+module.exports = { clientConfig, serverConfig };
+```
+
+şimdi `package.json` dosyamızda `scripts` kısmını yeni webpack ayalarımıza göre güncelleyelim.
+
+```json
+  "scripts": {
+    "start": "webpack serve --config webpack.config.js --env env=dev",
+    "build": "webpack --config webpack.config.js --env env=prod && node build/server.js"
+  },
+```
+
+öncelikle `npm start` diyerek projeyi development modda başlatalım ve sorunsuz şekilde çalıştığını görelim. Development mod server side rendering içermemektedir.
+Geliştirme yaparken bu modda çalışıyor olacağız.
+
+şimdi ise `npm run build` diyerek production için ilgili build dosyamızın oluşmasını sağlayalım. Aynı zamanda `http://localhost:3000/` adresine gidelim ve
+projemizin server side ayağa kalktığını görelim. Eğer hatasız bir şekilde sayfamız açıldıysa server side işlemlerini başarıyla uyguladık demektir. Emin olmak için  sayfa üzerinde
+**View page source(Sayfa kaynağını incele)** diyerek açılan sayfada **root** divi içerisinde sayfamızın render olduğunu görebilirsiniz. Örnek ekran görüntüsü aşağıdaki gibidir.
+
+![React Server Side Rendering Page Source](/assets/img/posts/react-server-side-rendering/react-ssr-page-source.png)
+
+projemizin son durumdaki klasör yapısı aşağıdaki gibidir.
+
+![Last Folder Structure](/assets/img/posts/react-server-side-rendering/last-folder-structure.png)
+
+projenin github kodlarına ve daha fazlasına aşağıdaki link üzerinden erişebilirsiniz.
+
+[React SSR App Github](https://github.com/aselcuk/react-ts-ssr-app)
+
+## Sonuç
+
+![The Wolf of Wall Street LD](/assets/img/posts/react-server-side-rendering/twows.webp)

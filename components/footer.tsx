@@ -12,7 +12,7 @@ export default function footer() {
       `}
     >
       <Text>
-        Bu projenin kaynak kodlarına <Text customStyle={css`color: ${({ theme }) => theme.colors.secondaryTextColor}; font-weight: 500;`}>
+        Bu blog projesinin kaynak kodlarına <Text customStyle={css`color: ${({ theme }) => theme.colors.secondaryTextColor}; font-weight: 500;`}>
           <a href='https://github.com/aselcuk/personal-blog' target='_blank'>Github</a>
         </Text> üzerinden ulaşabilirsiniz.
       </Text>

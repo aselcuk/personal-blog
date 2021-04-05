@@ -16,7 +16,7 @@ export const SwitchLabel = styled.label`
   border-radius: 100px;
   background: #3a3a3a;
   position: relative;
-  transition: background-color 0.2s;
+  transition: background-color 0.1s;
 `;
 
 export const SwitchButton = styled.span`
@@ -27,7 +27,7 @@ export const SwitchButton = styled.span`
   width: 24px;
   height: 24px;
   border-radius: 45px;
-  transition: 0.2s;
+  transition: 0.1s;
   z-index: 1;
   background: #fff;
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);

@@ -1,9 +1,12 @@
+import {Divider} from 'styled';
 import theme from 'prism-react-renderer/themes/vsDark';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 
 export const mdxComponents = {
+  Divider,
+  a: props => <a style={{ color: 'blue', fontWeight: 500 }} target='_blank' {...props} />,
   code: props => renderCodeBlock(props),
-  inlineCode: props => renderInlineCodeBlock(props)
+  inlineCode: props => renderInlineCodeBlock(props),
 };
 
 const renderInlineCodeBlock = ({ children }) => {
