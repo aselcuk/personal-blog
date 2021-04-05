@@ -1,4 +1,5 @@
-import {Divider} from 'styled';
+import { Divider } from 'styled';
+import styled from 'styled-components';
 import theme from 'prism-react-renderer/themes/vsDark';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 
@@ -6,7 +7,18 @@ export const mdxComponents = {
   Divider,
   a: props => <a style={{ color: 'blue', fontWeight: 500 }} target='_blank' {...props} />,
   code: props => renderCodeBlock(props),
-  inlineCode: props => renderInlineCodeBlock(props),
+  img: props => renderImage(props),
+  inlineCode: props => renderInlineCodeBlock(props)
+};
+
+const MDXImage = styled.img`
+  @media (max-width: 42rem) {
+    max-width: 100%;
+  }
+`;
+
+const renderImage = (props) => {
+  return <MDXImage {...props} />;
 };
 
 const renderInlineCodeBlock = ({ children }) => {

@@ -14,7 +14,7 @@ export default function ArticleDetail({ post, content }) {
         </BackButton>
       </Link>
 
-      <Box>
+      <Box customStyle={css`max-width: 100%;`}>
         <ArticleCard.ContentWrapper>
 
           <ArticleCard.Header>

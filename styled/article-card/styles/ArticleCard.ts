@@ -37,8 +37,6 @@ export const Content = styled.div`
 
   pre[class*=language-] {
     overflow: auto;
-    white-space: pre-wrap;
-    word-break: break-all;
   }
 `;
 
