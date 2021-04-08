@@ -1,12 +1,11 @@
 ---
 title: React ve TypeScript ile Server Side Rendering Nasıl Yapılır?
 excerpt: React, TypeScript, Webpack, ve Node.js ile routing bazlı server side rendering işlemleri.
-image: /images/placeholder.jpg
 author:
   - Ali Selçuk
 featured: true
 date: "05-04-2021"
-readingTime: " 30 dk. ☕☕☕☕😉"
+readingTime: " 30 dk okuma ☕☕☕☕"
 ---
 
 Bu yazıda React, TypeScript, Webpack ve Node.js(express) ile routing bazlı server side rendering nasıl yapılır anlatmaya çalışacağım. Öncelikle çalışacağımız
@@ -41,7 +40,7 @@ npm install react react-dom
 npm install --save-dev typescript @types/react @types/react-dom
 ```
 
-TypeScript için `tsconfig.json` dosyasını oluşturalım.
+TypeScript için root dizinde `tsconfig.json` dosyasını oluşturalım.
 ```json
 {
   "compilerOptions": {
@@ -85,7 +84,7 @@ ReactDOM.render(
 ```
 
 React ve TypeScript kodlarımızın JavaScript'e dönüştürülmesi ve çalışabilmesi için
-**babel** ayalarını yapmamız gerekiyor bu nedenle aşağıdaki paketleri projeye dahil
+**babel** ayarlarını yapmamız gerekiyor bu nedenle aşağıdaki paketleri projeye dahil
 edelim. Babel ile ilgili bilgi için [Babel](https://babeljs.io/docs/en/) sitesine göz
 atabilirsiniz.
 
@@ -93,7 +92,19 @@ atabilirsiniz.
 npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime @babel/runtime
 ```
 
-root dizinde `.babelrc` adında bir dosya oluşturalım ve aşağıdaki ayarları ekleyelim.
+`@babel/core:` core Babel kütüphanesi.
+
+`@babel/preset-env:` en son JavaScript özelliklerini kullanmamıza izin verir hem de JavaScript paketlerini küçültür.
+
+`@babel/preset-react:` React kodunun JavaScript'e dönüştürmesini sağlar.
+
+`@babel/preset-typescript:` TypeScript kodunun JavaScript'e dönüştürmesini sağlar.
+
+`@babel/plugin-transform-runtime` ve  `@babel/runtime:` async/await JavaScript özelliklerini kullanmamıza izin verir.
+
+<p>&nbsp;</p>
+
+root dizinde `.babelrc` adında bir dosya oluşturalım ve aşağıdaki ayarları ekleyelim. Bu dosyada Babel'e hangi ayarları kullanacağımızı söylüyoruz.
 
 ```json
 {
@@ -108,11 +119,18 @@ root dizinde `.babelrc` adında bir dosya oluşturalım ve aşağıdaki ayarlar�
 }
 ```
 
-bu ayarlardan sonra projeyi ayağa kaldırmak için ilgili **webpack** paketlerini ve ayarlarını ekleyelim. Daha fazla bilgi almak
+bu ayarlardan sonra projeyi ayağa kaldırmak için ilgili **webpack** paketlerini ve ayarlarını ekleyelim. 
+Webpack, tüm JavaScript kodumuzu tek bir JavaScript koduna çevirerek index.html dosyamıza enjekte eder. Daha fazla bilgi almak
 için [Webpack](https://webpack.js.org/) sitesine göz atabilirsiniz.
 
 ```bash
-npm install --save-dev webpack webpack-cli @types/webpack webpack-dev-server @types/webpack-dev-server
+npm install --save-dev webpack webpack-cli @types/webpack
+```
+
+development modda web sunucusunu ayağa kaldırmak için ilgili webpack paketlerini ekleyelim.
+
+```bash
+npm install --save-dev webpack-dev-server @types/webpack-dev-server
 ```
 
 webpack'in React ve TypeScript kodlarımızı anlayıp JavaScript'e nakledebilmesi için `babel-loader`'ı ekleyelim.
@@ -169,6 +187,18 @@ module.exports = {
 };
 ```
 
+`entry:` alanı Webpack'e paketlenecek modülleri aramaya nereden başlayacağını söyler. Giriş dosyamızın `index.tsx` olacağını belirttik.
+
+`module:` bu alanda kullanacağımız modülleri belirtmekteyiz birden fazla kural ekleyebiliriz.
+
+`extensions:` kısmında hangi dosya türlerinin kullanılacağını belirtmekteyiz.
+
+`mode:` kısmında projenin hangi modda başlatılacağını belirtmekteyiz.
+
+`devServer:` bu alanda ise developmentta çalışırken hangi ayarları kullancağımızı belirtmekteyiz.
+
+<p>&nbsp;</p>
+
 tüm bu ayalardan sonra `package.json` içerisinde `scripts` bölümünü düzenleyelim.
 
 ```json
@@ -197,6 +227,9 @@ npm install express cors react-router-dom serialize-javascript
 ```
 
 root dizinde `server` adında bir klasör oluşturup içerisine `index.js` adında bir dosya oluşturalım. Aşağıdaki kodları bu dosya içerisine ekleyelim.
+
+***Not: Kod içerisinde `app.use(express.static('build'))` bu satırda webpack ile build aldığımız klasörün adını belirtiyoruz. Eğer bu klasör içerisinde `index.html` olursa
+burada yaptığınız ayarlar çalışmayacaktır.***
 
 ```javascript
 import express from 'express';
@@ -469,7 +502,6 @@ const serverConfig = {
 };
 
 
-
 module.exports = { clientConfig, serverConfig };
 ```
 
@@ -482,7 +514,36 @@ module.exports = { clientConfig, serverConfig };
   },
 ```
 
-öncelikle `npm start` diyerek projeyi development modda başlatalım ve sorunsuz şekilde çalıştığını görelim. Development mod server side rendering içermemektedir.
+son olarak projemizi çalıştırmadan önce `index.tsx` dosyamızı güncellememiz gerekiyor. Render işlemimizin client mı yoksa server mı olduğunu kontrol etmemiz gerekiyor.
+index dosyamızı aşağıdaki gibi güncelleyelim.
+
+```jsx
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate; // burada kontrol yaptık
+
+renderMethod(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+bu güncellemeden sonra `module.hot` için hata alacaksınızdır bu nedenle aşağıdaki paketi de projemize ekleyelim.
+
+```bash
+npm install --save-dev @types/webpack-env
+```
+
+<p>&nbsp;</p>
+
+artık projemizi çalıştırabiliriz, öncelikle `npm start` diyerek projeyi development modda başlatalım ve sorunsuz şekilde çalıştığını görelim. Development mod server side rendering **içermemektedir**.
 Geliştirme yaparken bu modda çalışıyor olacağız.
 
 şimdi ise `npm run build` diyerek production için ilgili build dosyamızın oluşmasını sağlayalım. Aynı zamanda `http://localhost:3000/` adresine gidelim ve
@@ -491,6 +552,7 @@ projemizin server side ayağa kalktığını görelim. Eğer hatasız bir şekil
 
 ![React Server Side Rendering Page Source](/assets/img/posts/react-server-side-rendering/react-ssr-page-source.png)
 
+<p>&nbsp;</p>
 projemizin son durumdaki klasör yapısı aşağıdaki gibidir.
 
 ![Last Folder Structure](/assets/img/posts/react-server-side-rendering/last-folder-structure.png)
@@ -501,4 +563,7 @@ projenin github kodlarına ve daha fazlasına aşağıdaki link üzerinden eriş
 
 ## Sonuç
 
-![The Wolf of Wall Street LD](/assets/img/posts/react-server-side-rendering/twows.webp)
+Bu projede react ile development modda client side rendering, production modda ise server side rendering yapmış olduk. 
+
+Görüldüğü gibi bir react projesinde server side rendering yapmak çok zahmetli ve daha eklemediğimiz bir çok ayar mevcut. Bu nedenle server side rendering
+ihtiyacınız var ise [Next.js](https://nextjs.org/) birçok ihtiyacınızı çözecektir. Göz atmanızı tavsiye ederim.

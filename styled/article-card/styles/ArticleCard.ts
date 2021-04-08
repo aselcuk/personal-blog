@@ -37,6 +37,12 @@ export const Content = styled.div`
 
   pre[class*=language-] {
     overflow: auto;
+
+    &:hover {
+      .highlightCopyButton {
+        opacity: 1;
+      }
+    }
   }
 `;
 
