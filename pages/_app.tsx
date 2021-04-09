@@ -1,3 +1,4 @@
+import { Auth0Provider } from '@auth0/auth0-react';
 import { GlobalStyles } from 'global-styles';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const body = document.querySelector('body');
-    
+
     if (body) {
       body.style.backgroundColor = theme.colors.bgColor;
       setMounted(true);
@@ -23,17 +24,23 @@ function MyApp({ Component, pageProps }) {
   }, [theme.colors.bgColor]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <Auth0Provider
+      domain={process.env.NEXT_PUBLIC_OAUTH_DOMAIN}
+      clientId={process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID}
+      redirectUri={process.env.NEXT_PUBLIC_LOCATION_ORIGIN_URL}
+    >
+      <ThemeProvider theme={theme}>
 
-      <Head>
-        <title>Ali Selçuk | Blog</title>
-        <link rel='icon' href='/favicon.ico' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-      </Head>
+        <Head>
+          <title>Ali Selçuk | Blog</title>
+          <link rel='icon' href='/favicon.ico' />
+          <meta name='viewport' content='width=device-width,initial-scale=1' />
+        </Head>
 
-      <GlobalStyles />
-      {mounted && <Component {...pageProps} />}
-    </ThemeProvider>
+        <GlobalStyles />
+        {mounted && <Component {...pageProps} />}
+      </ThemeProvider>
+    </Auth0Provider>
   );
 }
 

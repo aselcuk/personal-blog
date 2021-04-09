@@ -7,7 +7,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 export const mdxComponents = {
   Divider,
   a: props => <a style={{ color: 'blue', fontWeight: 500 }} target='_blank' {...props} />,
-  code: props => RenderCodeBlock(props),
+  code: props => <div style={{ position: 'relative' }}>{RenderCodeBlock(props)}</div>,
   img: props => renderImage(props),
   inlineCode: props => renderInlineCodeBlock(props)
 };
@@ -25,6 +25,7 @@ const CopyButton = styled.button`
   opacity: 0;
   background-color: #ebeaef;
   border: none;
+  border-top-right-radius: 8px;
   font-size: 12px;
   cursor: pointer;
   outline: none;
@@ -49,7 +50,7 @@ const RenderCodeBlock = ({ children, className }) => {
   return (
     <Highlight {...defaultProps} theme={theme} code={children} language={lang}>
       {({ style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, borderRadius: '8px', padding: '10px 20px', position: 'relative' }}>
+        <pre className={className} style={{ ...style, borderRadius: '8px', padding: '10px 20px' }}>
           {tokens.map((line, i) => {
 
             if ((tokens.length - 1 === i) && line.length === 1) {
