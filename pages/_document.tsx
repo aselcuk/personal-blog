@@ -46,14 +46,6 @@ export default class MyDocument extends Document {
           <meta name='msapplication-TileColor' content='#232323' />
           <meta name='msapplication-config' content='/assets/favicons/browserconfig.xml' />
           <meta name='theme-color' content='#232323' />
-
-          <title>Ali Selçuk | Blog</title>
-          <meta property='og:title' content='Ali Selçuk Blog' />
-          <meta property='og:description' content='Ali Selçuk kişisel blog sitesi. Amacı bilginin yayılması ve çoğalması.' />
-          <meta property='og:url' content='https://aliselcuk.com' />
-          <meta property='og:locale' content='tr_TR' />
-          <meta property='og:type' content='website' />
-
         </Head>
 
         <body>
