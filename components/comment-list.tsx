@@ -7,7 +7,7 @@ export default function CommentList({ comments }) {
     <Box>
       {
         comments.map(comment => (
-          <Box customStyle={css`padding: 8px 30px;`} key={comment.id}>
+          <Box customStyle={css`padding: 8px 30px; max-width: 70%; @media (max-width: 42rem) {max-width: 100%};`} key={comment.id}>
             <Comment.Header customStyle={css`align-items: flex-start;`}>
               <Comment.ImageWrapper>
                 <img src={comment.picture} alt={comment.name} width='36px' height='36px' />

@@ -64,10 +64,5 @@ export const TextArea = styled.textarea`
 export const UserComment = styled.p`
   font-size: 14px;
   margin: 5px 0;
-  max-width: 70%;
   color: ${({ theme }) => theme.colors.primaryTextColor};
-
-  @media (max-width: 42rem) {
-    max-width: 100%;
-  }
 `;
