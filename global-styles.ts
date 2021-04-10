@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
-      color: inherit;
+      color: ${({ theme }) => theme.colors.secondaryTextColor};
       text-decoration: none;
     }
   

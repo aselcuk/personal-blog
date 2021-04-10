@@ -1,6 +1,7 @@
+import { Button } from 'styled/button/styles/Button';
 import styled from 'styled-components/macro';
 
-export const Button = styled.button`
+export const BackButton = styled(Button)`
   position: absolute;
   padding: 3px 5px;
   background: ${props => props.theme.colors.bgColor};

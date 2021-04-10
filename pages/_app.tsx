@@ -1,4 +1,5 @@
 import { Auth0Provider } from '@auth0/auth0-react';
+import { Footer } from 'components';
 import { GlobalStyles } from 'global-styles';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps }) {
 
         <GlobalStyles />
         {mounted && <Component {...pageProps} />}
+        {mounted && <Footer />}
       </ThemeProvider>
     </Auth0Provider>
   );

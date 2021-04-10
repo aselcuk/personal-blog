@@ -1,7 +1,6 @@
 import { Box } from 'styled';
-import { css } from 'styled-components';
 import { getAllNodes } from 'next-mdx/server';
-import { ArticleCardItem, Footer, UserCardItem } from 'components';
+import { ArticleCardItem, UserCardItem } from 'components';
 
 export default function Home({ posts }) {
 
@@ -15,7 +14,6 @@ export default function Home({ posts }) {
 					<ArticleCardItem key={post.hash} post={post} />
 				))
 			}
-			<Footer />
 		</Box.Center>
 	);
 }

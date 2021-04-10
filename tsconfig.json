@@ -13,6 +13,9 @@
       ],
       "styled/*": [
         "styled/*"
+      ],
+      "lib/*": [
+        "lib/*"
       ]
     },
     "target": "es5",

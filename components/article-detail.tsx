@@ -1,7 +1,7 @@
 import { CornerUpLeft } from 'styled/icons';
 import Link from 'next/link';
 import { css } from 'styled-components';
-import { ArticleCard, BackButton, Box } from 'styled';
+import { ArticleCard, Box, Button } from 'styled';
 
 export default function ArticleDetail({ post, content }) {
 
@@ -9,9 +9,9 @@ export default function ArticleDetail({ post, content }) {
     <ArticleCard>
 
       <Link href='/'>
-        <BackButton>
+        <Button.BackButton>
           <CornerUpLeft width='20px' height='20px' strokeWidth='2' />
-        </BackButton>
+        </Button.BackButton>
       </Link>
 
       <Box customStyle={css`max-width: 100%;`}>
