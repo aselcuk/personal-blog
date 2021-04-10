@@ -1,7 +1,6 @@
 import { Auth0Provider } from '@auth0/auth0-react';
 import { Footer } from 'components';
 import { GlobalStyles } from 'global-styles';
-import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 import { Theme, darkTheme, defaultTheme } from 'styled/theme';
@@ -31,13 +30,6 @@ function MyApp({ Component, pageProps }) {
       redirectUri={process.env.NEXT_PUBLIC_LOCATION_ORIGIN_URL}
     >
       <ThemeProvider theme={theme}>
-
-        <Head>
-          <title>Ali Selçuk | Blog</title>
-          <link rel='icon' href='/favicon.ico' />
-          <meta name='viewport' content='width=device-width,initial-scale=1' />
-        </Head>
-
         <GlobalStyles />
         {mounted && <Component {...pageProps} />}
         {mounted && <Footer />}

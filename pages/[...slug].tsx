@@ -1,7 +1,8 @@
 import { Box } from 'styled';
+import Head from 'next/head';
 import { mdxComponents } from 'components/mdx-components';
 import { useHydrate } from 'next-mdx/client';
-import { ArticleDetail, CommentBox, CommentList } from 'components';
+import { ArticleDetail, CommentBox } from 'components';
 import { getMdxNode, getMdxPaths } from 'next-mdx/server';
 
 export default function Detail({ post }) {
@@ -10,8 +11,19 @@ export default function Detail({ post }) {
     components: mdxComponents,
   });
 
+  // eslint-disable-next-line no-console
+  console.log(post);
+
   return (
     <Box.Center>
+
+      <Head>
+        <meta property='og:title' content={post.frontMatter.title} />
+        <meta property='og:description' content={post.frontMatter.excerpt} />
+        <meta property='og:url' content={`https://aliselcuk.com/${post.url}`} />
+        <title>{post.frontMatter.title}</title>
+      </Head>
+
       <ArticleDetail post={post} content={content} />
       <CommentBox />
     </Box.Center>
