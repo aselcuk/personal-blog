@@ -9,6 +9,7 @@ export const LoginButton = styled(Button)`
   border-radius: 8px;
   outline: none;
   cursor: pointer;
+  width: 100px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.secondaryTextColor};

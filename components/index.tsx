@@ -4,3 +4,4 @@ export { default as ArticleDetail } from './article-detail';
 export { default as SwitchTheme } from './switch-theme';
 export { default as Footer } from './footer';
 export { default as CommentBox } from './comment-box';
+export { default as CommentList } from './comment-list';

@@ -20,8 +20,8 @@ export const Container = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-    width: 80px;
-    height: 80px;
+    width: 68px;
+    height: 68px;
 
     img {
       border-radius: 99px;

@@ -1,18 +1,18 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-  padding: 20px;
+  padding: 8px 30px 20px 30px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 50%;
+  width: 70%;
 
   @media (max-width: 42rem) {
     width: 100%;
@@ -24,19 +24,20 @@ export const Header = styled.div`
   align-items: center;
   padding: 4px;
   margin-bottom: 5px;
+
+  ${({ customStyle }) => customStyle};
 `;
 
 export const ImageWrapper = styled.div`
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
 
     img {
       border-radius: 99px;
-      border: 1px solid ${({ theme }) => theme.colors.borderColor};
     }
 `;
 
-export const Title = styled.h4`
+export const Title = styled.h5`
   margin: 0;
   color: ${({ theme }) => theme.colors.primaryTextColor};
 `;
@@ -46,6 +47,8 @@ export const SubText = styled.span`
   margin-top: 2px;
   color: ${({ theme }) => theme.colors.subTextColor};
   cursor: pointer;
+
+  ${({ customStyle }) => customStyle};
 `;
 
 export const TextArea = styled.textarea`
@@ -56,4 +59,15 @@ export const TextArea = styled.textarea`
   outline: none;
   padding: 8px 0 0 8px;
   width: 100%;
+`;
+
+export const UserComment = styled.p`
+  font-size: 14px;
+  margin: 5px 0;
+  max-width: 70%;
+  color: ${({ theme }) => theme.colors.primaryTextColor};
+
+  @media (max-width: 42rem) {
+    max-width: 100%;
+  }
 `;

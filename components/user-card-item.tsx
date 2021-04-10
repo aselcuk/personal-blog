@@ -10,7 +10,7 @@ export default function UserCardItem() {
     <Box customStyle={css`position: relative;`}>
       <UserCard>
         <UserCard.ImageWrapper>
-          <Image src='/assets/img/profile.jpg' alt='user profile' width='80px' height='80px' />
+          <Image src='/assets/img/profile.jpg' alt='user profile' width='68px' height='68px' />
         </UserCard.ImageWrapper>
 
         <Box customStyle={css`

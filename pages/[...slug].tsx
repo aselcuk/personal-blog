@@ -1,7 +1,7 @@
 import { Box } from 'styled';
 import { mdxComponents } from 'components/mdx-components';
 import { useHydrate } from 'next-mdx/client';
-import { ArticleDetail, CommentBox } from 'components';
+import { ArticleDetail, CommentBox, CommentList } from 'components';
 import { getMdxNode, getMdxPaths } from 'next-mdx/server';
 
 export default function Detail({ post }) {
