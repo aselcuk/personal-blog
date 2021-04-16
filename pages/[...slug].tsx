@@ -11,9 +11,6 @@ export default function Detail({ post }) {
     components: mdxComponents,
   });
 
-  // eslint-disable-next-line no-console
-  console.log(post);
-
   return (
     <Box.Center>
 
