@@ -11,9 +11,6 @@ export default function Detail({ post }) {
     components: mdxComponents,
   });
 
-  // eslint-disable-next-line no-console
-  console.log('content', content);
-
   return (
     <Box.Center>
 
@@ -25,7 +22,7 @@ export default function Detail({ post }) {
       </Head>
 
       {
-        content.type.name === 'MDXProvider' ?
+        content.props?.components?.name === 'mdxComponents' ?
           <>
             <ArticleDetail post={post} content={content} />
             <CommentBox />
