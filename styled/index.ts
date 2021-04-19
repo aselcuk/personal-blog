@@ -6,3 +6,4 @@ export { default as ArticleCard } from './article-card';
 export { default as Text } from './text';
 export { default as Switch } from './switch-input';
 export { default as Divider } from './divider';
+export { default as Loader } from './loader';

@@ -2,12 +2,12 @@ import { Box } from 'styled';
 import Head from 'next/head';
 import { mdxComponents } from 'components/mdx-components';
 import { useHydrate } from 'next-mdx/client';
-import { ArticleDetail, CommentBox } from 'components';
+import { ArticleDetail, CommentBox, Loader } from 'components';
 import { getMdxNode, getMdxPaths } from 'next-mdx/server';
 
 export default function Detail({ post }) {
 
-  const content = useHydrate(post, {
+  const content: any = useHydrate(post, {
     components: mdxComponents,
   });
 
@@ -21,8 +21,14 @@ export default function Detail({ post }) {
         <title>{post.frontMatter.title}</title>
       </Head>
 
-      <ArticleDetail post={post} content={content} />
-      <CommentBox />
+      {
+        content.type.name === 'MDXProvider' ?
+          <>
+            <ArticleDetail post={post} content={content} />
+            <CommentBox />
+          </> :
+          <Loader />
+      }
     </Box.Center>
   );
 }

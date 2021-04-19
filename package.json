@@ -12,7 +12,7 @@
     "lint": "eslint ./**/*.{ts,tsx}",
     "lint:fix": "eslint --fix ./**/*.{ts,tsx}",
     "lint:staged": "lint-staged",
-    "svgr": "svgr ./public/assets/icons -d ./styled/icons --replace-attr-values \"#000=currentColor,#fff=currentColor\" --icon --memo --ext tsx && npm run lint:fix"
+    "svgr": "svgr ./public/assets/icons -d ./styled/icons --replace-attr-values \"#000=currentColor,#fff=currentColor,#fe718d=currentColor\" --icon --memo --ext tsx && npm run lint:fix"
   },
   "lint-staged": {
     "*.{ts,tsx}": "npm run lint"
