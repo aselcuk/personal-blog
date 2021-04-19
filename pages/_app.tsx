@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }) {
 
         <Head>
           <title>Ali Selçuk | Blog</title>
-          <meta property='og:title' content='Ali Selçuk Blog' />
+          <meta property='og:title' content='Ali Selçuk' />
           <meta property='og:description' content='Ali Selçuk kişisel blog sitesi. Amacı bilginin yayılması ve çoğalması.' />
           <meta property='og:url' content='https://aliselcuk.com' />
           <meta property='og:locale' content='tr_TR' />

@@ -9,7 +9,8 @@ export const mdxComponents = {
   a: props => <a style={{ color: 'blue', fontWeight: 500 }} target='_blank' {...props} />,
   code: props => <div style={{ position: 'relative' }}>{RenderCodeBlock(props)}</div>,
   img: props => renderImage(props),
-  inlineCode: props => renderInlineCodeBlock(props)
+  inlineCode: props => renderInlineCodeBlock(props),
+  name: 'mdxComponents'
 };
 
 const MDXImage = styled.img`
