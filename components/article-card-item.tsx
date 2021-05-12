@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { css } from 'styled-components';
+import Link from 'next/link';
 import { ArticleCard, Box } from 'styled';
 
 export default function ArticleCardItem({ post }) {

@@ -1,6 +1,6 @@
+import { css } from 'styled-components';
 import { Loader } from 'styled';
 import { Loading } from 'styled/icons';
-import { css } from 'styled-components';
 
 export default function loader() {
   return (

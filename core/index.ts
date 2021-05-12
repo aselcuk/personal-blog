@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType } from 'react';
+import { ComponentPropsWithoutRef, ComponentPropsWithRef, ElementType } from 'react';
 
 export type HTMLElementProps<T extends ElementType<unknown>> = ComponentPropsWithoutRef<T> & {
     customStyle?: Array<string>;

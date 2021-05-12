@@ -4,7 +4,7 @@ import { GlobalStyles } from 'global-styles';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
-import { Theme, darkTheme, defaultTheme } from 'styled/theme';
+import { darkTheme, defaultTheme, Theme } from 'styled/theme';
 import { useEffect, useState } from 'react';
 
 

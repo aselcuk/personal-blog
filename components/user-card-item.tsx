@@ -1,6 +1,6 @@
+import { css } from 'styled-components';
 import Image from 'next/image';
 import { SwitchTheme } from 'components';
-import { css } from 'styled-components';
 import { Box, UserCard } from 'styled';
 import { Github, Linkedin } from 'styled/icons';
 

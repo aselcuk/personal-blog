@@ -1,6 +1,6 @@
 import { CornerUpLeft } from 'styled/icons';
-import Link from 'next/link';
 import { css } from 'styled-components';
+import Link from 'next/link';
 import { ArticleCard, Box, Button } from 'styled';
 
 export default function ArticleDetail({ post, content }) {

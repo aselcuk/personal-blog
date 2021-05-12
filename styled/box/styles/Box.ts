@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Center = styled.div`
-    max-width: 1024px;
+    max-width: 768px;
     margin: auto;
 
     ${({ customStyle }) => customStyle};
